@@ -12,7 +12,11 @@
 
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
+
 NAME=libft.a
+OBJ_DIR=obj
+INC_DIR=include
+SRC_DIR=src
 
 SRC = ft_atoi.c ft_bzero.c ft_dup.c ft_ftoa.c ft_isalnum.c \
 	ft_isalpha.c ft_isascii.c  ft_isdigit.c ft_islower.c ft_isprint.c \
@@ -31,23 +35,21 @@ SRC = ft_atoi.c ft_bzero.c ft_dup.c ft_ftoa.c ft_isalnum.c \
 	ft_tolower.c ft_toupper.c ft_swap.c ft_iszero.c ft_ftoa_long.c \
 	ft_print_memory.c ft_atol.c ft_max.c\
 
-INCLUDES=libft.h
-OBJ_DIR=obj
-OBJ=$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+OBJ=$(SRC:.c=.o)
+OBJS=$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJS)
 	@ar rcs $@ $^
 	@ranlib $@
 
-$(OBJ_DIR)/%.o: %.c $(INCLUDES)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/libft.h
 	@mkdir -p obj
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@rm -rf $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)

@@ -1,22 +1,22 @@
 GCC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-NAME = lem
+NAME = lem-in
 INC_DIR = include
 SRC_DIR = src
 OBJ_DIR = obj
 
-SRС = main.c foo.c
+SRC = main.c foo.c parsing.c
 OBJ = $(SRC:.c=.o)
 
 SRCS=$(addprefix $(SRC_DIR)/,$(SRC))
 OBJS=$(addprefix $(OBJ_DIR)/,$(OBJ))
 
-all: $(OBJS) #$(NAME)
+all: $(NAME)
 
-# $(NAME): $(OBJS)
-# 	@make -C ft_printf
-# 	@$(GCC) $(CFLAGS) -o $(NAME) $(OBJS) -L ft_printf -lftprintf
+$(NAME): $(OBJS)
+	@make -C ft_printf
+	@$(GCC) $(CFLAGS) -o $(NAME) $(OBJS) -L ft_printf -lftprintf
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c $(INC_DIR)/lem_in.h
 	@mkdir -p $(OBJ_DIR)
