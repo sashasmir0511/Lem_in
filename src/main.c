@@ -2,6 +2,12 @@
 
 int		main()
 {
-	parsing();
+	int		ants;
+	t_rooms	*rooms;
+
+	rooms = NULL;
+	ants = get_ants();
+	rooms_add(&rooms);
+	debug(ants, &rooms);
 	return 0;
 }
