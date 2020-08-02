@@ -13,7 +13,7 @@ static void	free_split(char **split)
 	free(split);
 }
 
-static void	add_new_room(t_rooms **rooms, char *line)
+static void	add_new_room(t_rooms *rooms, char *line)
 {
 	char	**split;
 
@@ -22,14 +22,15 @@ static void	add_new_room(t_rooms **rooms, char *line)
 	|| split[1] == NULL || split[2] == NULL)
 	{
 		free_split(split);
-		error(*rooms, line);
+		error(rooms, line);
 	}
 	else
 	{
-		room_add(*rooms,
+		ft_printf("%s %d %d\n", split[0], ft_atoi(split[1]), ft_atoi(split[2]));
+		room_add(rooms,
 			room_new(split[0], ft_atoi(split[1]), ft_atoi(split[2])));
 		free_split(split);
-		(*rooms)->num_of_rooms++;
+		rooms->num_of_rooms++;
 	}
 }
 
@@ -48,12 +49,12 @@ void	rooms_add(t_rooms **rooms)
 		}
 		if (ft_strequ("##start", line))
 			//fl = 1;
-			break;
+			continue;
 		else if (ft_strequ("##end", line))
 			//fl = -1;
-			break;
+			continue;
 		else
-			add_new_room(rooms, line);
+			add_new_room(*rooms, line);
 		free(line);
 	}
 }

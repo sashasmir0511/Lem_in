@@ -22,7 +22,7 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c $(INC_DIR)/lem_in.h
 	@mkdir -p $(OBJ_DIR)
-	$(GCC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	$(GCC) $(CFLAGS) -I $(INC_DIR) -g -c $< -o $@
 
 clean:
 	@make clean -C ft_printf

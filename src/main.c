@@ -8,6 +8,6 @@ int		main()
 	rooms = NULL;
 	ants = get_ants();
 	rooms_add(&rooms);
-	debug(ants, &rooms);
+	debug(ants, brooms);
 	return 0;
 }
