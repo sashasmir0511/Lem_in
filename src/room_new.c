@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-t_room	*room_new(char *name, int x, int y)
+t_room	*room_new(char *name, int x, int y, int fl)
 {
 	t_room	*room;
 
@@ -9,7 +9,7 @@ t_room	*room_new(char *name, int x, int y)
 	room->name = ft_strdup(name);
 	room->coord_x = x;
 	room->coord_y = y;
-	room->status = 0;
+	room->status = fl;
 	room->room_list = NULL;
 	return (room);
 }

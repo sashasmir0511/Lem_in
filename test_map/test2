@@ -1,5 +1,15 @@
+# [b]-[d]
+#  |   |
+# [a]-[c]
 20
-a 0 0
 ##start
-b 0 4
-c 2 2
+a 0 0
+b 0 1
+c 1 0
+##end
+d 1 1
+#links
+a-b
+a-c
+b-d
+c-d
