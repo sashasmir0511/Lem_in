@@ -55,10 +55,12 @@ void	rooms_add(t_rooms **rooms, int *s, int *e)
 		{
 			break;
 		}
-		if (ft_strequ("##start", line))
+		if (*s == -1 && ft_strequ("##start", line))
 			fl = 1;
-		else if (ft_strequ("##end", line))
+		else if (*e == -1 && ft_strequ("##end", line))
 			fl = -1;
+		else if (ft_strequ("##end", line) || ft_strequ("##start", line))
+			error(*rooms, line);
 		else if (line[0] != '#')
 		{
 			start_or_end(s, e, add_new_room(*rooms, line, fl), fl);

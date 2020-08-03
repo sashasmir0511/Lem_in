@@ -7,8 +7,8 @@ int		main()
 	int		end;
 	t_rooms	*rooms;
 
-	start = 0;
-	end = 0;
+	start = -1;
+	end = -1;
 	rooms = NULL;
 	ants = get_ants();
 	rooms_add(&rooms, &start, &end);
