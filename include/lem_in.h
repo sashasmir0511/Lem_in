@@ -6,10 +6,10 @@
 
 typedef struct	s_room
 {
-	char		*name;
-	int			coord_x;
-	int			coord_y;
-	int			status;
+	char			*name;
+	int				coord_x;
+	int				coord_y;
+	int				status;
 	struct s_room	*room_list;
 }				t_room;
 
@@ -17,6 +17,8 @@ typedef struct	s_rooms
 {
 	int			num_of_rooms;
 	t_room		*room_list; //назвать head_room_list;
+	int			**table_paths;
+	char		**table_name;
 }				t_rooms;
 
 
@@ -27,6 +29,8 @@ int	parsing();
 int		get_ants();
 void	error(t_rooms *rooms, char *line);
 void	debug(int ants, t_rooms *rooms);
+void	free_split(char **split);
+
 
 
 /*
@@ -43,5 +47,7 @@ void		room_print(t_room *room);
 t_rooms		*rooms_new();
 void		rooms_add(t_rooms **rooms, int *s, int *e);
 void		rooms_del(t_rooms *rooms);
+void		table_print(t_rooms *rooms);
+void		add_links(t_rooms *rooms, char *line, int *s, int *e);
 
 #endif

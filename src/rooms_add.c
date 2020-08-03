@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-static void	free_split(char **split)
+void	free_split(char **split)
 {
 	int	i;
 
@@ -53,6 +53,7 @@ void	rooms_add(t_rooms **rooms, int *s, int *e)
 	{
 		if (ft_strchr(line, '-') != NULL)
 		{
+			add_links(*rooms, line, s, e);
 			break;
 		}
 		if (*s == -1 && ft_strequ("##start", line))

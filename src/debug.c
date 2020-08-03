@@ -9,6 +9,26 @@ void	room_print(t_room *room)
 	ft_printf("status -> %d\n", room->status);
 }
 
+void	table_print(t_rooms *rooms)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	while (i < rooms->num_of_rooms)
+	{
+		j = 0;
+		ft_printf("%s", rooms->table_name[i]);
+		while (j < rooms->num_of_rooms)
+		{
+			ft_printf(" %d", rooms->table_paths[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+	}
+}
+
 void	debug(int ants, t_rooms *rooms)
 {
 	t_room	*tmp;
@@ -27,4 +47,5 @@ void	debug(int ants, t_rooms *rooms)
 		tmp = tmp->room_list;
 		ft_printf("\n");
 	}
+	table_print(rooms);
 }
