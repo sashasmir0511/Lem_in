@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 6
+#define SIZE 4
 int main()
 {
 	int a[SIZE][SIZE]; // матрица связей
@@ -70,7 +70,7 @@ int main()
 
 	// Восстановление пути
 	int ver[SIZE]; // массив посещенных вершин
-	int end = 4; // индекс конечной вершины = 5 - 1
+	int end = 3; // индекс конечной вершины = 5 - 1
 	ver[0] = end + 1; // начальный элемент - конечная вершина
 	int k = 1; // индекс предыдущей вершины
 	int weight = d[end]; // вес конечной вершины
