@@ -1,9 +1,14 @@
 #ifndef LEM_IN
 # define LEM_IN
-# define INF -1
+
 # include "../ft_printf/include/ft_printf.h"
 # include "../ft_printf/include/get_next_line.h"
 # include <stdio.h>
+# define FALSE 0
+# define TRUE !FALSE
+
+typedef int				t_bool;
+
 
 typedef struct	s_room
 {
@@ -14,13 +19,14 @@ typedef struct	s_room
 	struct s_room	*room_list;
 }				t_room;
 
+
+# define INF -1
 typedef struct	s_rooms
 {
 	int			num_of_rooms;
 	t_room		*room_list; //назвать head_room_list;
 	int			**table_paths;
 	char		**table_name;
-	int			ant_count;
 	int			start;
 	int			end;
 }				t_rooms;
@@ -57,8 +63,6 @@ void		add_links(t_rooms *rooms, char *line, int *s, int *e);
 /*
 **	For algorithm
 */
-int 		algorithm_work(t_rooms *rooms);
-int			find_paths(t_rooms *rooms);
-void		dijkstra(t_rooms *rooms);
+int			*dijkstra(t_rooms *rooms);
 
 #endif
