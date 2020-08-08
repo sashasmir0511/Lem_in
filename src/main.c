@@ -3,15 +3,11 @@
 int		main()
 {
 	int		ants;
-	int		start;
-	int		end;
 	t_rooms	*rooms;
 
-	start = -1;
-	end = -1;
 	rooms = NULL;
 	ants = get_ants();
-	rooms_add(&rooms, &start, &end);
+	rooms_add(&rooms);
 	debug(ants, rooms);
 	return 0;
 }

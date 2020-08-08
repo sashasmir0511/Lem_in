@@ -13,12 +13,22 @@ typedef struct	s_room
 	struct s_room	*room_list;
 }				t_room;
 
+/*
+**	t_rooms
+**	num_of_rooms	-> number of rooms in the column
+**	start			-> starting room
+**	end				-> end room
+**	table_paths		-> Adjacency matrix
+**	table_name		-> list of names rooms
+*/
 typedef struct	s_rooms
 {
 	int			num_of_rooms;
 	t_room		*room_list; //назвать head_room_list;
 	int			**table_paths;
 	char		**table_name;
+	int			start;
+	int			end;
 }				t_rooms;
 
 
@@ -45,9 +55,9 @@ void		room_print(t_room *room);
 **	Work or list rooms
 */
 t_rooms		*rooms_new();
-void		rooms_add(t_rooms **rooms, int *s, int *e);
+void		rooms_add(t_rooms **rooms);
 void		rooms_del(t_rooms *rooms);
 void		table_print(t_rooms *rooms);
-void		add_links(t_rooms *rooms, char *line, int *s, int *e);
+void		add_links(t_rooms *rooms, char *line);
 
 #endif

@@ -29,20 +29,16 @@ static int	add_new_room(t_rooms *rooms, char *line, int fl)
 		room_add(rooms,
 			room_new(split[0], ft_atoi(split[1]), ft_atoi(split[2]), fl));
 		free_split(split);
+		if (fl == 1)
+			rooms->start = rooms->num_of_rooms;
+		else if (fl == -1)
+			rooms->end = rooms->num_of_rooms;
 		rooms->num_of_rooms++;
 	}
 	return (rooms->num_of_rooms - 1);
 }
 
-static void	start_or_end(int *s, int *e, int s_e, int fl)
-{
-	if (fl == 1)
-		*s = s_e;
-	else if (fl == -1)
-		*e = s_e;
-}
-
-void	rooms_add(t_rooms **rooms, int *s, int *e)
+void	rooms_add(t_rooms **rooms)
 {
 	int		fl;
 	char	*line;
@@ -53,18 +49,18 @@ void	rooms_add(t_rooms **rooms, int *s, int *e)
 	{
 		if (ft_strchr(line, '-') != NULL)
 		{
-			add_links(*rooms, line, s, e);
+			add_links(*rooms, line);
 			break;
 		}
-		if (*s == -1 && ft_strequ("##start", line))
+		if ((*rooms)->start == -1 && ft_strequ("##start", line))
 			fl = 1;
-		else if (*e == -1 && ft_strequ("##end", line))
+		else if ((*rooms)->end == -1 && ft_strequ("##end", line))
 			fl = -1;
 		else if (ft_strequ("##end", line) || ft_strequ("##start", line))
 			error(*rooms, line);
 		else if (line[0] != '#')
 		{
-			start_or_end(s, e, add_new_room(*rooms, line, fl), fl);
+			add_new_room(*rooms, line, fl);
 			fl = 0;
 		}
 		free(line);

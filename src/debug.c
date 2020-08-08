@@ -37,15 +37,17 @@ void	debug(int ants, t_rooms *rooms)
 		tmp = rooms->room_list;
 	else
 		tmp = NULL;
-	
-	ft_printf("ant -> %d\n", ants);
+	ft_printf("\nant -> %d\n", ants);
 	ft_printf("num_of_room -> %d\n", rooms->num_of_rooms);
+	ft_printf("start -> %s(%d)\tend -> %s(%d)\n",
+		rooms->table_name[rooms->start], rooms->start,
+		rooms->table_name[rooms->end], rooms->end);
 	ft_printf("----------------\n");
-	while(tmp)
-	{
-		room_print(tmp);
-		tmp = tmp->room_list;
-		ft_printf("\n");
-	}
+	// while(tmp)
+	// {
+	// 	room_print(tmp);
+	// 	tmp = tmp->room_list;
+	// 	ft_printf("\n");
+	// }
 	table_print(rooms);
 }
