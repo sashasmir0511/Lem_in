@@ -60,6 +60,7 @@ static void		add_link_to_table(t_rooms *rooms, char *line)
 	int		first;
 	int		second;
 
+	second = 0;
 	split = ft_strsplit(line, '-');
 	if (!split[0] || !split[1])
 		error(rooms, line);

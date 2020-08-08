@@ -19,6 +19,9 @@ typedef struct	s_rooms
 	t_room		*room_list; //назвать head_room_list;
 	int			**table_paths;
 	char		**table_name;
+	int			ant_count;
+	int			start;
+	int			end;
 }				t_rooms;
 
 
@@ -49,5 +52,10 @@ void		rooms_add(t_rooms **rooms, int *s, int *e);
 void		rooms_del(t_rooms *rooms);
 void		table_print(t_rooms *rooms);
 void		add_links(t_rooms *rooms, char *line, int *s, int *e);
+
+/*
+**	For algorithm
+*/
+//alghoritm_work(t_rooms *rooms);
 
 #endif
