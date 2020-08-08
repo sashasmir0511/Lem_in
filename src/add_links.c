@@ -63,8 +63,9 @@ static void		add_link_to_table(t_rooms *rooms, char *line)
 	split = ft_strsplit(line, '-');
 	if (!split[0] || !split[1])
 		error(rooms, line);
-	if ((first = get_index_room(split[0], rooms)) == -1
-	|| (second = get_index_room(split[1], rooms)) == -1)
+	first = get_index_room(split[0], rooms);
+	second = get_index_room(split[1], rooms);
+	if (first == -1 || second == -1)
 		error(rooms, line);
 	rooms->table_paths[first][second] = 1;
 	rooms->table_paths[second][first] = 1;
