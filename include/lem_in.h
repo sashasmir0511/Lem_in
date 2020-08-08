@@ -1,5 +1,6 @@
 #ifndef LEM_IN
 # define LEM_IN
+# define INF -1
 # include "../ft_printf/include/ft_printf.h"
 # include "../ft_printf/include/get_next_line.h"
 # include <stdio.h>
@@ -56,6 +57,8 @@ void		add_links(t_rooms *rooms, char *line, int *s, int *e);
 /*
 **	For algorithm
 */
-//alghoritm_work(t_rooms *rooms);
+int 		algorithm_work(t_rooms *rooms);
+int			find_paths(t_rooms *rooms);
+void		dijkstra(t_rooms *rooms);
 
 #endif

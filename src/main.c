@@ -13,6 +13,7 @@ int		main()
 	ants = get_ants();
 	rooms_add(&rooms, &start, &end);
 	debug(ants, rooms);
-	//alghoritm_work(rooms);
+	algorithm_work(rooms);
+
 	return 0;
 }
