@@ -6,8 +6,7 @@
 # include <stdio.h>
 # define FALSE 0
 # define TRUE !FALSE
-
-typedef int				t_bool;
+# define INF -1
 
 
 typedef struct	s_room
@@ -20,7 +19,7 @@ typedef struct	s_room
 }				t_room;
 
 
-# define INF -1
+
 typedef struct	s_rooms
 {
 	int			num_of_rooms;
