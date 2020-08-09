@@ -31,12 +31,12 @@ void	table_print(t_rooms *rooms)
 
 void	debug(int ants, t_rooms *rooms)
 {
-	t_room	*tmp;
+	// t_room	*tmp;
 
-	if (rooms->room_list != NULL)
-		tmp = rooms->room_list;
-	else
-		tmp = NULL;
+	// if (rooms->room_list != NULL)
+	// 	tmp = rooms->room_list;
+	// else
+	// 	tmp = NULL;
 	ft_printf("\nant -> %d\n", ants);
 	ft_printf("num_of_room -> %d\n", rooms->num_of_rooms);
 	ft_printf("start -> %s(%d)\tend -> %s(%d)\n",
