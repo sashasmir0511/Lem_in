@@ -10,6 +10,8 @@ int		*dijkstra(t_rooms *rooms)
 
 	i = 0;
 
+	if (!(shortest_path = (int*)ft_memalloc(sizeof(rooms->num_of_rooms))))
+		return (0);
 	while (i < rooms->num_of_rooms)
 	{
 		shortest_path[i] = rooms->table_paths[rooms->start][i];
