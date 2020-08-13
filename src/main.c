@@ -7,7 +7,7 @@ int		main()
 	int		end;
 	t_rooms	*rooms;
 
-	ft_printf("%d %d", TRUE, FALSE);
+//	ft_printf("%d %d", TRUE, FALSE);
 	start = -1;
 	end = -1;
 	rooms = NULL;
