@@ -46,16 +46,6 @@ int		*dijkstra(t_rooms *rooms)
 		}
 		i++;
 	}
-	//ft_printf("Стоимость пути из начальной вершины до остальных(Алгоритм Дейкстры):\t\n");
-//	for (int i=0; i<n; i++)
-//	{
-//		if (shortest_path[i]!=INF)
-//			ft_printf(rooms->start, " -> ",i," = ",shortest_path[i]);
-//		else
-//			ft_printf(rooms->start, " -> ", i, " = ", "маршрут недоступен");
-//	}
-
-		return(shortest_path);
-
+	return(shortest_path);
 }
 
