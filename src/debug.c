@@ -9,6 +9,19 @@ void	room_print(t_room *room)
 	ft_printf("status -> %d\n", room->status);
 }
 
+void	print_paths(int N, int *a)
+{
+	int i;
+
+	i = 0;
+	while (i < N)
+	{
+		ft_printf("%d ", a[i]);
+		i++;
+	}
+	ft_printf("\n");
+}
+
 void	table_print(t_rooms *rooms)
 {
 	int	i;

@@ -4,9 +4,9 @@
 # include "../ft_printf/include/ft_printf.h"
 # include "../ft_printf/include/get_next_line.h"
 # include <stdio.h>
-# define FALSE 0
-# define TRUE !FALSE
-# define INF -1
+# define FALSE	0
+# define TRUE	!FALSE
+# define INF	-1
 
 
 typedef struct	s_room
@@ -72,6 +72,7 @@ void		rooms_add(t_rooms **rooms);
 void		rooms_del(t_rooms *rooms);
 void		table_print(t_rooms *rooms);
 void		add_links(t_rooms *rooms, char *line);
+void		print_paths(int N, int *a);
 
 /*
 **	Work for list paths
