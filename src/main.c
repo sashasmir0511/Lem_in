@@ -10,7 +10,6 @@ int		main()
 	rooms_add(&rooms);
 	solver(rooms);
 	debug(ants, rooms);
-	dijkstra(rooms);
 
 	return 0;
 }

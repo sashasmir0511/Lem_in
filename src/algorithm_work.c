@@ -6,12 +6,13 @@ int		*dijkstra(t_rooms *rooms)
 	int *shortest_path = NULL;
 	int index;
 	int u;
-	int i, j;
+	int i;
+	int j;
 
 	i = 0;
-
-	if (!(shortest_path = (int*)ft_memalloc(sizeof(rooms->num_of_rooms))))
-		return (0);
+	if (!(shortest_path = (int*)ft_memalloc(sizeof(rooms->num_of_rooms)))
+		|| !(visited = (int*)ft_memalloc(sizeof(rooms->num_of_rooms))))
+		return (NULL);
 	while (i < rooms->num_of_rooms)
 	{
 		shortest_path[i] = rooms->table_paths[rooms->start][i];
@@ -23,7 +24,7 @@ int		*dijkstra(t_rooms *rooms)
 	i = 0;
 	while (i < rooms->num_of_rooms)
 	{
-		int min=INF;
+		int min = INF;
 		for (int j=0;j < rooms->num_of_rooms; j++)
 		{
 			if (!visited[j] && shortest_path[j] < min)
