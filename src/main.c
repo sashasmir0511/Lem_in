@@ -3,16 +3,18 @@
 int		main()
 {
 	int		ants;
-	int		start;
-	int		end;
 	t_rooms	*rooms;
 
+<<<<<<< HEAD
 //	ft_printf("%d %d", TRUE, FALSE);
 	start = -1;
 	end = -1;
+=======
+>>>>>>> origin/sasha
 	rooms = NULL;
 	ants = get_ants();
-	rooms_add(&rooms, &start, &end);
+	rooms_add(&rooms);
+	solver(rooms);
 	debug(ants, rooms);
 	dijkstra(rooms);
 

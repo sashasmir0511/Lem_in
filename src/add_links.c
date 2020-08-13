@@ -16,7 +16,7 @@ static int		*get_path(int n)
 	return (tr);
 }
 
-static int		create_table(t_rooms *rooms, int *s, int *e)
+static int		create_table(t_rooms *rooms)
 {
 	int		i;
 	t_room	*r;
@@ -35,8 +35,8 @@ static int		create_table(t_rooms *rooms, int *s, int *e)
 		r = r->room_list;
 	}
 	rooms->table_name[i] = NULL;
-	*s = rooms->num_of_rooms - (1 + *s);
-	*e = rooms->num_of_rooms - (1 + *e);
+	rooms->start = rooms->num_of_rooms - (1 + rooms->start);
+	rooms->end = rooms->num_of_rooms - (1 + rooms->end);
 	return 0;
 }
 
@@ -64,8 +64,9 @@ static void		add_link_to_table(t_rooms *rooms, char *line)
 	split = ft_strsplit(line, '-');
 	if (!split[0] || !split[1])
 		error(rooms, line);
-	if ((first = get_index_room(split[0], rooms)) == -1
-	|| (second = get_index_room(split[1], rooms)) == -1)
+	first = get_index_room(split[0], rooms);
+	second = get_index_room(split[1], rooms);
+	if (first == -1 || second == -1)
 		error(rooms, line);
 	rooms->table_paths[first][second] = 1;
 	rooms->table_paths[second][first] = 1;
@@ -73,13 +74,13 @@ static void		add_link_to_table(t_rooms *rooms, char *line)
 	free(line);
 }
 
-void 			add_links(t_rooms *rooms, char *_line, int *s, int *e)
+void 			add_links(t_rooms *rooms, char *_line)
 {
 	char	*line;
 
-	if (*s == -1 || *e == -1)
+	if (rooms->start == -1 || rooms->end == -1)
 		error(rooms, _line);
-	if (create_table(rooms, s, e))
+	if (create_table(rooms))
 		error(rooms, _line);
 	add_link_to_table(rooms, _line);
 	while (get_next_line(0, &line) > 0 && line && *line)

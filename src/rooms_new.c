@@ -7,6 +7,8 @@ t_rooms	*rooms_new()
 	if (!(rooms = (t_rooms*)ft_memalloc(sizeof(t_rooms))))
 		return (NULL);
 	rooms->num_of_rooms = 0;
+	rooms->start = -1;
+	rooms->end = -1;
 	rooms->room_list = NULL;
 	return rooms;
 }

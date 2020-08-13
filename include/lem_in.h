@@ -18,12 +18,31 @@ typedef struct	s_room
 	struct s_room	*room_list;
 }				t_room;
 
+<<<<<<< HEAD
 
 
+=======
+typedef struct	s_paths
+{
+	int				size_paths;
+	int				*paths;
+	struct s_paths	*next;
+}				t_paths;
+
+/*
+**	t_rooms
+**	num_of_rooms	-> number of rooms in the column
+**	start			-> starting room
+**	end				-> end room
+**	table_paths		-> Adjacency matrix
+**	table_name		-> list of names rooms
+*/
+>>>>>>> origin/sasha
 typedef struct	s_rooms
 {
 	int			num_of_rooms;
 	t_room		*room_list; //назвать head_room_list;
+	t_paths		*head_paths;
 	int			**table_paths;
 	char		**table_name;
 	int			start;
@@ -32,14 +51,14 @@ typedef struct	s_rooms
 
 
 
-int main();
-int foo();
-int	parsing();
+int 	main();
+int 	foo();
+int		parsing();
 int		get_ants();
 void	error(t_rooms *rooms, char *line);
 void	debug(int ants, t_rooms *rooms);
 void	free_split(char **split);
-
+void	solver(t_rooms *rooms);
 
 
 /*
@@ -51,13 +70,19 @@ void		room_del(t_room *room);
 void		room_print(t_room *room);
 
 /*
-**	Work or list rooms
+**	Work for list rooms
 */
 t_rooms		*rooms_new();
-void		rooms_add(t_rooms **rooms, int *s, int *e);
+void		rooms_add(t_rooms **rooms);
 void		rooms_del(t_rooms *rooms);
 void		table_print(t_rooms *rooms);
-void		add_links(t_rooms *rooms, char *line, int *s, int *e);
+void		add_links(t_rooms *rooms, char *line);
+
+/*
+**	Work for list paths
+*/
+void 		paths_add(t_rooms *rooms, t_paths *p);
+t_paths		*paths_new(int *p);
 
 /*
 **	For algorithm

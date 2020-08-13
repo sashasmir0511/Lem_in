@@ -8,7 +8,12 @@ OBJ_DIR = obj
 
 SRC = main.c foo.c parsing.c get_ants.c error.c debug.c\
 	rooms_new.c rooms_add.c rooms_del.c \
+<<<<<<< HEAD
 	room_new.c room_add.c room_del.c algorithm_work.c\
+=======
+	room_new.c room_add.c room_del.c \
+	paths_add.c paths_new.c solver.c \
+>>>>>>> origin/sasha
 	add_links.c
 OBJ = $(SRC:.c=.o)
 
