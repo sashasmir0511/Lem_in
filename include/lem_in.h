@@ -1,8 +1,13 @@
 #ifndef LEM_IN
 # define LEM_IN
+
 # include "../ft_printf/include/ft_printf.h"
 # include "../ft_printf/include/get_next_line.h"
 # include <stdio.h>
+# define FALSE 0
+# define TRUE !FALSE
+# define INF -1
+
 
 typedef struct	s_room
 {
@@ -73,5 +78,10 @@ void		add_links(t_rooms *rooms, char *line);
 */
 void 		paths_add(t_rooms *rooms, t_paths *p);
 t_paths		*paths_new(int *p);
+
+/*
+**	For algorithm
+*/
+int			*dijkstra(t_rooms *rooms);
 
 #endif
