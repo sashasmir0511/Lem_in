@@ -22,9 +22,9 @@ void		solver(t_rooms *rooms)
 
 	while ((paths = dijkstra(rooms)) != NULL)
 	{
+		print_paths(rooms->num_of_rooms, paths);
 		paths_add(rooms, paths_new(paths));
 		delete_paths_from_table(rooms, paths);
-		print_paths(rooms->num_of_rooms, paths);
 	}
 	
 }
