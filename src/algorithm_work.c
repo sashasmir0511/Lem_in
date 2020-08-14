@@ -47,29 +47,42 @@ int		*dijkstra(t_rooms *rooms)
 	//int ver[SIZE]; // массив посещенных вершин
 	//int end = 3; // индекс конечной вершины = 5 - 1
 
+	int begin_index = 0;
 	visited[0] = rooms->end + 1; // начальный элемент - конечная вершина
 	int k = 1; // индекс предыдущей вершины
 	int weight = shortest_path[rooms->end]; // вес конечной вершины
+	int num = 0;
+	int temp = 0;
 
-	while (rooms->end != rooms->num_of_rooms) // пока не дошли до начальной вершины
+	while (rooms->end !=  begin_index) // пока не дошли до начальной вершины
 	{
-		for (int i = 0; i < rooms->num_of_rooms; i++) // просматриваем все вершины
-			if (rooms->table_paths[i][rooms->end] != 0)   // если связь есть
+		ft_printf("dikstra1");
+		while (num < rooms->num_of_rooms) // просматриваем все вершины
+		{
+			ft_printf("%i", "num room", rooms->num_of_rooms, "\n");
+			if (rooms->table_paths[num][rooms->end] != 0)   // если связь есть
 			{
-				int temp = weight - rooms->table_paths[i][rooms->end]; // определяем вес пути из предыдущей вершины
-				if (temp == shortest_path[i]) // если вес совпал с рассчитанным
+
+				 temp = weight - rooms->table_paths[num][rooms->end]; // определяем вес пути из предыдущей вершины
+				if (temp == shortest_path[num]) // если вес совпал с рассчитанным
 				{                 // значит из этой вершины и был переход
 					weight = temp; // сохраняем новый вес
-					rooms->end = i;       // сохраняем предыдущую вершину
-					visited[k] = i + 1; // и записываем ее в массив
+					rooms->end = num;       // сохраняем предыдущую вершину
+					visited[k] = num + 1; // и записываем ее в массив
 					k++;
 				}
 			}
+			num++;
+
+		}
+		rooms->end -= num;
+
 	}
-	// Вывод пути (начальная вершина оказалась в конце массива из k элементов)
+//	// Вывод пути (начальная вершина оказалась в конце массива из k элементов)
 	ft_printf("\nВывод кратчайшего пути\n");
-	for (int i = k - 1; i >= 0; i--)
-		ft_printf("%3d ",visited[i]);
+	for (int i = k - 1; i >= 0; i--) {
+		ft_printf("%3d ", shortest_path[i]);
+	}
 
 	return (shortest_path);
 
