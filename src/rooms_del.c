@@ -5,6 +5,8 @@ void	rooms_del(t_rooms *rooms)
 	int		i;
 	t_room	*tmp;
 
+	if (rooms->head_paths)
+		paths_del(rooms);
 	while (rooms->room_list)
 	{
 		tmp = rooms->room_list;

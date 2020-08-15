@@ -10,5 +10,6 @@ int		main()
 	rooms_add(&rooms);
 	debug(ants, rooms);
 	solver(rooms, ants);
+	rooms_del(rooms);
 	return 0;
 }

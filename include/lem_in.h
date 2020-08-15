@@ -78,6 +78,7 @@ void		print_paths(int N, int *a);
 */
 void 		paths_add(t_rooms *rooms, t_paths *p);
 t_paths		*paths_new(int *p);
+void		paths_del(t_rooms *rooms);
 
 /*
 **	For algorithm

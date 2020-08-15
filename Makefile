@@ -9,7 +9,7 @@ OBJ_DIR = obj
 SRC = main.c foo.c parsing.c get_ants.c error.c debug.c\
 	rooms_new.c rooms_add.c rooms_del.c \
 	room_new.c room_add.c room_del.c \
-	paths_add.c paths_new.c solver.c \
+	paths_add.c paths_new.c paths_del.c solver.c \
 	dijkstra.c\
 	add_links.c
 OBJ = $(SRC:.c=.o)

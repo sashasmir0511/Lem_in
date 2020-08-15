@@ -27,5 +27,4 @@ void		solver(t_rooms *rooms, int ants)
 		delete_paths_from_table(rooms, paths);
 	}
 	ants = ants + 0;
-	
 }
