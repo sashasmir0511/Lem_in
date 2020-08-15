@@ -25,13 +25,13 @@ void	print_path(int N, int *a)
 
 void	print_paths(t_rooms *rooms)
 {
-	t_paths	*p;
+	t_path	*p;
 
 	p = rooms->head_paths;
 	ft_printf("___________\n");
 	while (p)
 	{
-		print_path(p->size_paths, p->paths);
+		print_path(p->size_path, p->path);
 		p = p->next;
 	}
 }

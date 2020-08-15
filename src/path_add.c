@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-void 	paths_add(t_rooms *rooms, t_paths *p)
+void 	path_add(t_rooms *rooms, t_path *p)
 {
 	if (p == NULL)
 		return;

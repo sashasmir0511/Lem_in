@@ -22,8 +22,8 @@ void		solver(t_rooms *rooms, int ants)
 
 	while ((path = dijkstra(rooms)) != NULL)
 	{
-		paths_add(rooms, paths_new(path));
+		path_add(rooms, path_new(path));
 		delete_paths_from_table(rooms, path);
 	}
-	ants = ants + 0;
+	ants += 0;
 }

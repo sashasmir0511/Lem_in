@@ -2,13 +2,13 @@
 
 void	paths_del(t_rooms *rooms)
 {
-	t_paths *p;
+	t_path *p;
 
 	while (rooms->head_paths)
 	{
 		p = rooms->head_paths;
 		rooms->head_paths = rooms->head_paths->next;
-		free(p->paths);
+		free(p->path);
 		free(p);
 	}
 }

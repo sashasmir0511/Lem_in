@@ -18,12 +18,19 @@ typedef struct	s_room
 	struct s_room	*room_list;
 }				t_room;
 
-typedef struct	s_paths
+typedef struct	s_path
 {
-	int				size_paths;
-	int				*paths;
-	struct s_paths	*next;
-}				t_paths;
+	int				size_path;
+	int				*path;
+	struct s_path	*next;
+}				t_path;
+
+// typedef struct	s_ant
+// {
+// 	int				index;
+// 	int				index_room;
+// 	struct s_ant	*next;
+// }				t_ant;
 
 /*
 **	t_rooms
@@ -37,7 +44,7 @@ typedef struct	s_rooms
 {
 	int			num_of_rooms;
 	t_room		*room_list; //назвать head_room_list;
-	t_paths		*head_paths;
+	t_path		*head_paths;
 	int			**table_paths;
 	char		**table_name;
 	int			start;
@@ -75,8 +82,8 @@ void		add_links(t_rooms *rooms, char *line);
 /*
 **	Work for list paths
 */
-void 		paths_add(t_rooms *rooms, t_paths *p);
-t_paths		*paths_new(int *p);
+void 		path_add(t_rooms *rooms, t_path *p);
+t_path		*path_new(int *p);
 void		paths_del(t_rooms *rooms);
 void		print_path(int N, int *a);
 void		print_paths(t_rooms *rooms);
