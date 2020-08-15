@@ -8,6 +8,9 @@ int		main()
 	rooms = NULL;
 	ants = get_ants();
 	rooms_add(&rooms);
-	debug(ants, rooms);
+	solver(rooms, ants);
+	// debug(ants, rooms);
+	print_solver(rooms);
+	rooms_del(rooms);
 	return 0;
 }
