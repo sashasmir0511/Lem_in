@@ -9,6 +9,16 @@ void	room_print(t_room *room)
 	ft_printf("status -> %d\n", room->status);
 }
 
+void	print_ant(t_ant *a)
+{
+	while (a)
+	{
+		ft_printf("ant -> %d, index_room -> %d\n",
+			a->index, a->index_room);
+		a = a->next;
+	}
+}
+
 void	print_path(int N, int *a)
 {
 	int i;
@@ -32,6 +42,7 @@ void	print_paths(t_rooms *rooms)
 	while (p)
 	{
 		print_path(p->size_path, p->path);
+		print_ant(p->ant_head);
 		p = p->next;
 	}
 }

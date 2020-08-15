@@ -18,6 +18,7 @@ t_path	*path_new(int *p)
 	if (!(path = (t_path*)ft_memalloc(sizeof(t_path))))
 		return (NULL);
 	path->path = p;
+	path->size_ant = 0;
 	path->size_path = len_path(p);
 	path->next = NULL;
 	return path;
