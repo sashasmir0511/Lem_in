@@ -102,5 +102,6 @@ void		print_ant(t_ant *a);
 */
 int			*dijkstra(t_rooms *rooms);
 void		solver(t_rooms *rooms, int ants);
+void		print_solver(t_rooms *rooms);
 
 #endif
