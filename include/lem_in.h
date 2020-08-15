@@ -53,7 +53,6 @@ int		get_ants();
 void	error(t_rooms *rooms, char *line);
 void	debug(int ants, t_rooms *rooms);
 void	free_split(char **split);
-void	solver(t_rooms *rooms);
 
 
 /*
@@ -84,5 +83,6 @@ t_paths		*paths_new(int *p);
 **	For algorithm
 */
 int			*dijkstra(t_rooms *rooms);
+void		solver(t_rooms *rooms, int ants);
 
 #endif

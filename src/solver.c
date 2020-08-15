@@ -16,7 +16,7 @@ static void	delete_paths_from_table(t_rooms *rooms, int *p)
 	}
 }
 
-void		solver(t_rooms *rooms)
+void		solver(t_rooms *rooms, int ants)
 {
 	int	*paths;
 
@@ -26,5 +26,6 @@ void		solver(t_rooms *rooms)
 		paths_add(rooms, paths_new(paths));
 		delete_paths_from_table(rooms, paths);
 	}
+	ants = ants + 0;
 	
 }

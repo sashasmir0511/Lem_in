@@ -10,5 +10,8 @@ t_rooms	*rooms_new()
 	rooms->start = -1;
 	rooms->end = -1;
 	rooms->room_list = NULL;
+	rooms->table_name = NULL;
+	rooms->table_paths = NULL;
+	rooms->head_paths = NULL;
 	return rooms;
 }
