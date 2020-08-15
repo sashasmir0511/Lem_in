@@ -71,7 +71,6 @@ void		rooms_add(t_rooms **rooms);
 void		rooms_del(t_rooms *rooms);
 void		table_print(t_rooms *rooms);
 void		add_links(t_rooms *rooms, char *line);
-void		print_paths(int N, int *a);
 
 /*
 **	Work for list paths
@@ -79,6 +78,8 @@ void		print_paths(int N, int *a);
 void 		paths_add(t_rooms *rooms, t_paths *p);
 t_paths		*paths_new(int *p);
 void		paths_del(t_rooms *rooms);
+void		print_path(int N, int *a);
+void		print_paths(t_rooms *rooms);
 
 /*
 **	For algorithm

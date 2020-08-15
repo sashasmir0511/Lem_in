@@ -18,13 +18,12 @@ static void	delete_paths_from_table(t_rooms *rooms, int *p)
 
 void		solver(t_rooms *rooms, int ants)
 {
-	int	*paths;
+	int	*path;
 
-	while ((paths = dijkstra(rooms)) != NULL)
+	while ((path = dijkstra(rooms)) != NULL)
 	{
-		print_paths(rooms->num_of_rooms, paths);
-		paths_add(rooms, paths_new(paths));
-		delete_paths_from_table(rooms, paths);
+		paths_add(rooms, paths_new(path));
+		delete_paths_from_table(rooms, path);
 	}
 	ants = ants + 0;
 }

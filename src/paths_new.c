@@ -3,7 +3,12 @@
 //check
 static int	len_paths(int *p)
 {
-	return (sizeof(*p) / sizeof(int));
+	int	i;
+
+	i = 1;
+	while (p[i])
+		i++;
+	return(i);
 }
 
 t_paths	*paths_new(int *p)
