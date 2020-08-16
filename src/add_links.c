@@ -6,7 +6,7 @@ static int		*get_path(int n)
 	int	i;
 
 	if (!(tr = (int *)malloc(sizeof(int) * n)))
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (i < n)
 	{
@@ -25,11 +25,11 @@ static int		create_table(t_rooms *rooms)
 	r = rooms->room_list;
 	if (!(rooms->table_paths = (int**)ft_memalloc(sizeof(int*) * rooms->num_of_rooms))
 	|| !(rooms->table_name = (char**)ft_memalloc(sizeof(char*) * (rooms->num_of_rooms + 1))))
-		return 1;
+		return (1);
 	while (r)
 	{
 		if (!(rooms->table_paths[i] = get_path(rooms->num_of_rooms)))
-			return 1;
+			return (1);
 		rooms->table_name[i] = r->name;
 		i++;
 		r = r->room_list;
@@ -37,7 +37,7 @@ static int		create_table(t_rooms *rooms)
 	rooms->table_name[i] = NULL;
 	rooms->start = rooms->num_of_rooms - (1 + rooms->start);
 	rooms->end = rooms->num_of_rooms - (1 + rooms->end);
-	return 0;
+	return (0);
 }
 
 static int		get_index_room(char *name, t_rooms *rooms)
@@ -45,13 +45,13 @@ static int		get_index_room(char *name, t_rooms *rooms)
 	int		i;
 
 	i = 0;
-	while(i < rooms->num_of_rooms)
+	while (i < rooms->num_of_rooms)
 	{
 		if (ft_strequ(rooms->table_name[i], name))
-			return i;
+			return (i);
 		i++;
 	}
-	return -1;
+	return (-1);
 }
 
 static void		add_link_to_table(t_rooms *rooms, char *line)
@@ -74,7 +74,7 @@ static void		add_link_to_table(t_rooms *rooms, char *line)
 	free(line);
 }
 
-void 			add_links(t_rooms *rooms, char *_line)
+void			add_links(t_rooms *rooms, char *_line)
 {
 	char	*line;
 

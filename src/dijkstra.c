@@ -1,6 +1,5 @@
 #include "lem_in.h"
 
-
 static int	*recovery_path(t_rooms *rooms, int *d)
 {
 	int *ver;
@@ -15,7 +14,7 @@ static int	*recovery_path(t_rooms *rooms, int *d)
 	ver[0] = rooms->end;
 	weight = d[rooms->end];
 	if (weight == 10000)
-		return NULL;
+		return (NULL);
 	end = rooms->end;
 	j = 1;
 	while (end != rooms->start)
@@ -42,7 +41,8 @@ static int	*recovery_path(t_rooms *rooms, int *d)
 }
 
 // Дать нормальное имя переменным и разбить на функции
-static int	*shortest(t_rooms *rooms, int *visited, int *shortest_path)
+
+static	int	*shortest(t_rooms *rooms, int *visited, int *shortest_path)
 {
 	int	minindex;
 	int	min;

@@ -3,8 +3,8 @@
 void	room_print(t_room *room)
 {
 	if (room == NULL)
-		return;
-	ft_printf("name_room -> %s\n",	room->name);
+		return ;
+	ft_printf("name_room -> %s\n", room->name);
 	ft_printf("x -> %d y -> %d\n", room->coord_x, room->coord_y);
 	ft_printf("status -> %d\n", room->status);
 }
@@ -19,13 +19,13 @@ void	print_ant(t_ant *a)
 	}
 }
 
-void	print_path(int N, int *a)
+void	print_path(int n, int *a)
 {
 	int i;
 
 	i = 0;
-	ft_printf("size - %d: ", N);
-	while (i < N)
+	ft_printf("size - %d: ", n);
+	while (i < n)
 	{
 		ft_printf("%d ", a[i]);
 		i++;

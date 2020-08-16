@@ -30,11 +30,11 @@ static t_path	*find_path_for_ant(t_rooms *r)
 		if (p->size_path + p->size_ant < min)
 		{
 			min = p->size_path + p->size_ant;
-			result = p; 
+			result = p;
 		}
 		p = p->next;
 	}
-	return result;
+	return (result);
 }
 
 void			solver(t_rooms *rooms, int ants)

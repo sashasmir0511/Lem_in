@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-int		main()
+int		main(void)
 {
 	int		ants;
 	t_rooms	*rooms;
@@ -12,5 +12,5 @@ int		main()
 	// debug(ants, rooms);
 	print_solver(rooms);
 	rooms_del(rooms);
-	return 0;
+	return (0);
 }

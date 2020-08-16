@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-void	free_split(char **split)
+void		free_split(char **split)
 {
 	int	i;
 
@@ -38,19 +38,19 @@ static int	add_new_room(t_rooms *rooms, char *line, int fl)
 	return (rooms->num_of_rooms - 1);
 }
 
-void	rooms_add(t_rooms **rooms)
+void		rooms_add(t_rooms **rooms)
 {
 	int		fl;
 	char	*line;
 
 	fl = 0;
 	*rooms = rooms_new();
-	while(get_next_line(0, &line) > 0 && line && *line)
+	while (get_next_line(0, &line) > 0 && line && *line)
 	{
 		if (ft_strchr(line, '-') != NULL)
 		{
 			add_links(*rooms, line);
-			break;
+			break ;
 		}
 		if ((*rooms)->start == -1 && ft_strequ("##start", line))
 			fl = 1;

@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-t_rooms	*rooms_new()
+t_rooms	*rooms_new(void)
 {
 	t_rooms	*rooms;
 
@@ -13,5 +13,5 @@ t_rooms	*rooms_new()
 	rooms->table_name = NULL;
 	rooms->table_paths = NULL;
 	rooms->head_paths = NULL;
-	return rooms;
+	return (rooms);
 }

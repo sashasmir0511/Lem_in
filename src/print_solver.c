@@ -9,7 +9,7 @@ static t_path	*delete_empty_path(t_path *p)
 	{
 		// ft_printf("1\n");
 		free(p);
-		return NULL;
+		return (NULL);
 	}
 	while (tmp->next != p)
 		tmp = tmp->next;
@@ -74,4 +74,3 @@ void			print_solver(t_rooms *rooms)
 	}
 	rooms->head_paths = NULL;
 }
-
