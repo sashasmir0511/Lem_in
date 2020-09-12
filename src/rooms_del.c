@@ -20,7 +20,7 @@ void	rooms_del(t_rooms *rooms)
 		free(rooms->table_name[i]);
 		i++;
 	}
-	if (rooms->table_name != NULL)
-		free(rooms->table_name[i]);
+	free(rooms->table_paths);
+	free(rooms->table_name);
 	free(rooms);
 }

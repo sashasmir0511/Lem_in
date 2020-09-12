@@ -19,7 +19,7 @@ int	get_ants()
 				free(line);
 				continue;
 			}
-			else if ((num_of_ant = ft_atoi(line)) <= 0) //Уточнить в правилах знак
+			else if (ft_strchr(line, ' ') != NULL || (num_of_ant = ft_atoi(line)) <= 0)
 			{
 				free(line);
 				ft_printf("ERROR\n");

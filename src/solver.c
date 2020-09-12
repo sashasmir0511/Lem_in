@@ -48,6 +48,13 @@ void			solver(t_rooms *rooms, int ants)
 		delete_paths_from_table(rooms, path);
 	}
 	i = 1;
+	if (rooms->head_paths == NULL)
+	{
+		free(path);
+		rooms_del(rooms);
+		ft_printf("ERROR\n");
+		exit(1);
+	}
 	while (i <= ants)
 	{
 		ant_add(find_path_for_ant(rooms),

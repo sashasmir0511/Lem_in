@@ -11,16 +11,17 @@ static int	*recovery_path(t_rooms *rooms, int *d)
 
 	if (!(ver = (int*)ft_memalloc(sizeof(int) * rooms->num_of_rooms)))
 	{
-	    free(d);
-        return (NULL);
-    }
+		free(d);
+		return (NULL);
+	}
 	ver[0] = rooms->end;
 	weight = d[rooms->end];
 	if (weight == 10000)
 	{
-	    free(d);
-        return (NULL);
-    }
+		free(d);
+		free(ver);
+		return (NULL);
+	}
 	end = rooms->end;
 	j = 1;
 	while (end != rooms->start)
