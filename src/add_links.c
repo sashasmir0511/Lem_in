@@ -24,17 +24,16 @@ static int		create_table(t_rooms *rooms)
 	i = 0;
 	r = rooms->room_list;
 	if (!(rooms->table_paths = (int**)ft_memalloc(sizeof(int*) * rooms->num_of_rooms))
-	|| !(rooms->table_name = (char**)ft_memalloc(sizeof(char*) * (rooms->num_of_rooms + 1))))
+	|| !(rooms->table_name = (char**)ft_memalloc(sizeof(char*) * rooms->num_of_rooms)))
 		return (1);
 	while (r)
 	{
 		if (!(rooms->table_paths[i] = get_path(rooms->num_of_rooms)))
 			return (1);
-		rooms->table_name[i] = r->name;
+		rooms->table_name[i] = ft_strdup(r->name);
 		i++;
 		r = r->room_list;
 	}
-	rooms->table_name[i] = NULL;
 	rooms->start = rooms->num_of_rooms - (1 + rooms->start);
 	rooms->end = rooms->num_of_rooms - (1 + rooms->end);
 	return (0);
@@ -71,7 +70,6 @@ static void		add_link_to_table(t_rooms *rooms, char *line)
 	rooms->table_paths[first][second] = 1;
 	rooms->table_paths[second][first] = 1;
 	free_split(split);
-	free(line);
 }
 
 void			add_links(t_rooms *rooms, char *_line)
@@ -84,6 +82,11 @@ void			add_links(t_rooms *rooms, char *_line)
 		error(rooms, _line);
 	add_link_to_table(rooms, _line);
 	while (get_next_line(0, &line) > 0 && line && *line)
+    {
+	    ft_printf("%s\n", line);
 		if (line[0] != '#')
 			add_link_to_table(rooms, line);
+		free(line);
+    }
+	free(line);
 }

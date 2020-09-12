@@ -11,7 +11,7 @@ SRC = main.c get_ants.c error.c debug.c\
 	room_new.c room_add.c room_del.c \
 	path_add.c path_new.c paths_del.c solver.c \
 	ant_add.c ant_new.c ants_del.c \
-	dijkstra.c print_solver.c\
+	dijkstra.c print_solver.c path_del.c\
 	add_links.c
 OBJ = $(SRC:.c=.o)
 

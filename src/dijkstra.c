@@ -10,11 +10,17 @@ static int	*recovery_path(t_rooms *rooms, int *d)
 	int	end;
 
 	if (!(ver = (int*)ft_memalloc(sizeof(int) * rooms->num_of_rooms)))
-		return (NULL);
+	{
+	    free(d);
+        return (NULL);
+    }
 	ver[0] = rooms->end;
 	weight = d[rooms->end];
 	if (weight == 10000)
-		return (NULL);
+	{
+	    free(d);
+        return (NULL);
+    }
 	end = rooms->end;
 	j = 1;
 	while (end != rooms->start)
@@ -79,9 +85,6 @@ static	int	*shortest(t_rooms *rooms, int *visited, int *shortest_path)
 			}
 			visited[minindex] = TRUE;
 		}
-		// print_paths(rooms->num_of_rooms, shortest_path);
-		// print_paths(rooms->num_of_rooms, visited);
-		// ft_printf("min - %d minin - %d\n", min, minindex);
 	}
 	return (shortest_path);
 }

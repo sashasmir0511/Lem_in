@@ -47,6 +47,7 @@ void		rooms_add(t_rooms **rooms)
 	*rooms = rooms_new();
 	while (get_next_line(0, &line) > 0 && line && *line)
 	{
+	    ft_printf("%s\n", line);
 		if (ft_strchr(line, '-') != NULL)
 		{
 			add_links(*rooms, line);
@@ -65,4 +66,5 @@ void		rooms_add(t_rooms **rooms)
 		}
 		free(line);
 	}
+	free(line);
 }

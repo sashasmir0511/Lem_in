@@ -84,6 +84,7 @@ void		add_links(t_rooms *rooms, char *line);
 */
 void 		path_add(t_rooms *rooms, t_path *p);
 t_path		*path_new(int *p);
+void        path_del(t_path *p);
 void		paths_del(t_rooms *rooms);
 void		print_path(int N, int *a);
 void		print_paths(t_rooms *rooms);

@@ -1,0 +1,8 @@
+.gitignore
+.idea/
+ft_printf/libft/libft.a
+ft_printf/libft/obj/
+ft_printf/libftprintf.a
+ft_printf/obj/
+lem-in
+obj/

@@ -13,6 +13,7 @@ int	get_ants()
 	{
 		if (get_next_line(0, &line) > 0 && line && *line)
 		{
+		    ft_printf("%s\n", line);
 			if (line[0] == '#')
 			{
 				free(line);

@@ -7,14 +7,13 @@ static t_path	*delete_empty_path(t_path *p)
 	tmp = p->next;
 	if (tmp == p)
 	{
-		// ft_printf("1\n");
-		free(p);
+		path_del(p);
 		return (NULL);
 	}
 	while (tmp->next != p)
 		tmp = tmp->next;
 	tmp->next = p->next;
-	free(p);
+    path_del(p);
 	return (tmp->next);
 }
 
@@ -41,7 +40,6 @@ void			print_solver(t_rooms *rooms)
 	p = p->next;
 	while (p)
 	{
-		// ft_printf("ant %d\n", p->size_ant);
 		if (p->size_ant != 0)
 		{
 			a = p->ant_head;

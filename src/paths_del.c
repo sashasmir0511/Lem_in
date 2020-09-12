@@ -8,8 +8,6 @@ void	paths_del(t_rooms *rooms)
 	{
 		p = rooms->head_paths;
 		rooms->head_paths = rooms->head_paths->next;
-		ants_del(p);
-		free(p->path);
-		free(p);
+		path_del(p);
 	}
 }
