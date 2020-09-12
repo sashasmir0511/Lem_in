@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rooms_add.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lhaired <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/12 14:15:33 by lhaired           #+#    #+#             */
+/*   Updated: 2020/09/12 14:15:34 by lhaired          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void		free_split(char **split)
@@ -13,7 +25,7 @@ void		free_split(char **split)
 	free(split);
 }
 
-static int	add_new_room(t_rooms *rooms, char *line, int fl)
+static int	add_new_room(t_rooms *rooms, char *line, int *fl)
 {
 	char	**split;
 
@@ -27,12 +39,13 @@ static int	add_new_room(t_rooms *rooms, char *line, int fl)
 	else
 	{
 		room_add(rooms,
-			room_new(split[0], ft_atoi(split[1]), ft_atoi(split[2]), fl));
+			room_new(split[0], ft_atoi(split[1]), ft_atoi(split[2]), *fl));
 		free_split(split);
-		if (fl == 1)
+		if (*fl == 1)
 			rooms->start = rooms->num_of_rooms;
-		else if (fl == -1)
+		else if (*fl == -1)
 			rooms->end = rooms->num_of_rooms;
+		*fl = 0;
 		rooms->num_of_rooms++;
 	}
 	return (rooms->num_of_rooms - 1);
@@ -47,7 +60,7 @@ void		rooms_add(t_rooms **rooms)
 	*rooms = rooms_new();
 	while (get_next_line(0, &line) > 0 && line && *line)
 	{
-	    ft_printf("%s\n", line);
+		ft_printf("%s\n", line);
 		if (ft_strchr(line, '-') != NULL)
 		{
 			add_links(*rooms, line);
@@ -60,10 +73,7 @@ void		rooms_add(t_rooms **rooms)
 		else if (ft_strequ("##end", line) || ft_strequ("##start", line))
 			error(*rooms, line);
 		else if (line[0] != '#')
-		{
-			add_new_room(*rooms, line, fl);
-			fl = 0;
-		}
+			add_new_room(*rooms, line, &fl);
 		free(line);
 	}
 	free(line);

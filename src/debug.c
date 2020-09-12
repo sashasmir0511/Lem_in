@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lhaired <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/12 14:13:26 by lhaired           #+#    #+#             */
+/*   Updated: 2020/09/12 14:13:27 by lhaired          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	room_print(t_room *room)
@@ -7,16 +19,6 @@ void	room_print(t_room *room)
 	ft_printf("name_room -> %s\n", room->name);
 	ft_printf("x -> %d y -> %d\n", room->coord_x, room->coord_y);
 	ft_printf("status -> %d\n", room->status);
-}
-
-void	print_ant(t_ant *a)
-{
-	while (a)
-	{
-		ft_printf("ant -> %d, index_room -> %d\n",
-			a->index, a->index_room);
-		a = a->next;
-	}
 }
 
 void	print_path(int n, int *a)
@@ -36,13 +38,20 @@ void	print_path(int n, int *a)
 void	print_paths(t_rooms *rooms)
 {
 	t_path	*p;
+	t_ant	*a;
 
 	p = rooms->head_paths;
 	ft_printf("___________\n");
 	while (p)
 	{
 		print_path(p->size_path, p->path);
-		print_ant(p->ant_head);
+		a = p->ant_head;
+		while (a)
+		{
+			ft_printf("ant -> %d, index_room -> %d\n",
+				a->index, a->index_room);
+			a = a->next;
+		}
 		p = p->next;
 	}
 }

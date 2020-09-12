@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_links.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lhaired <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/12 14:11:52 by lhaired           #+#    #+#             */
+/*   Updated: 2020/09/12 14:11:55 by lhaired          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 static int		*get_path(int n)
@@ -23,8 +35,10 @@ static int		create_table(t_rooms *rooms)
 
 	i = 0;
 	r = rooms->room_list;
-	if (!(rooms->table_paths = (int**)ft_memalloc(sizeof(int*) * rooms->num_of_rooms))
-	|| !(rooms->table_name = (char**)ft_memalloc(sizeof(char*) * rooms->num_of_rooms)))
+	if (!(rooms->table_paths =
+		(int**)ft_memalloc(sizeof(int*) * rooms->num_of_rooms))
+	|| !(rooms->table_name =
+		(char**)ft_memalloc(sizeof(char*) * rooms->num_of_rooms)))
 		return (1);
 	while (r)
 	{
@@ -72,21 +86,21 @@ static void		add_link_to_table(t_rooms *rooms, char *line)
 	free_split(split);
 }
 
-void			add_links(t_rooms *rooms, char *_line)
+void			add_links(t_rooms *rooms, char *line_)
 {
 	char	*line;
 
 	if (rooms->start == -1 || rooms->end == -1)
-		error(rooms, _line);
+		error(rooms, line_);
 	if (create_table(rooms))
-		error(rooms, _line);
-	add_link_to_table(rooms, _line);
+		error(rooms, line_);
+	add_link_to_table(rooms, line_);
 	while (get_next_line(0, &line) > 0 && line && *line)
-    {
-	    ft_printf("%s\n", line);
+	{
+		ft_printf("%s\n", line);
 		if (line[0] != '#')
 			add_link_to_table(rooms, line);
 		free(line);
-    }
+	}
 	free(line);
 }
