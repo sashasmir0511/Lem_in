@@ -89,7 +89,7 @@ void			print_solver(t_rooms *rooms)
 			p = delete_empty_path(rooms, p);
 			continue;
 		}
-		if (p->next == rooms->head_paths)
+		if (p->next == rooms->head_paths && p->next->size_ant != 0)
 			ft_printf("\n");
 		p = p->next;
 	}
