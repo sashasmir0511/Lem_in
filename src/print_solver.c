@@ -12,11 +12,13 @@
 
 #include "lem_in.h"
 
-static t_path	*delete_empty_path(t_path *p)
+static t_path	*delete_empty_path(t_rooms *rooms, t_path *p)
 {
 	t_path	*tmp;
 
 	tmp = p->next;
+	if (rooms->head_paths == p)
+		rooms->head_paths = p->next;
 	if (tmp == p)
 	{
 		path_del(p);
@@ -81,12 +83,10 @@ void			print_solver(t_rooms *rooms)
 	while (p)
 	{
 		if (p->size_ant != 0)
-		{
 			print_step(rooms, p);
-		}
 		else
 		{
-			p = delete_empty_path(p);
+			p = delete_empty_path(rooms, p);
 			continue;
 		}
 		if (p->next == rooms->head_paths)

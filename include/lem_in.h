@@ -65,8 +65,8 @@ typedef struct	s_rooms
 }				t_rooms;
 
 int				main();
-int				get_ants();
-void			error(t_rooms *rooms, char *line);
+int				get_ants(char **map);
+void			error(t_rooms *rooms, char *line, char *map);
 void			debug(int ants, t_rooms *rooms);
 void			free_split(char **split);
 int				*clear(int *d, int *ver);
@@ -83,10 +83,10 @@ void			room_print(t_room *room);
 **	Work with a list rooms
 */
 t_rooms			*rooms_new();
-void			rooms_add(t_rooms **rooms);
+int				rooms_add(t_rooms **rooms, char **map);
 void			rooms_del(t_rooms *rooms);
 void			table_print(t_rooms *rooms);
-void			add_links(t_rooms *rooms, char *line);
+void			add_links(t_rooms *rooms, char *line, char **map);
 
 /*
 **	Work with a list paths

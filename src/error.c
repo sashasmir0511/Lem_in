@@ -21,10 +21,14 @@ int		*clear(int *d, int *ver)
 	return (NULL);
 }
 
-void	error(t_rooms *rooms, char *line)
+void	error(t_rooms *rooms, char *line, char *map)
 {
-	free(line);
-	rooms_del(rooms);
+	if (line != NULL)
+		free(line);
+	if (map != NULL)
+		free(map);
+	if (rooms != NULL)
+		rooms_del(rooms);
 	ft_printf("ERROR\n");
 	exit(1);
 }

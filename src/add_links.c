@@ -67,7 +67,7 @@ static int		get_index_room(char *name, t_rooms *rooms)
 	return (-1);
 }
 
-static void		add_link_to_table(t_rooms *rooms, char *line)
+static void		add_link_to_table(t_rooms *rooms, char *line, char **map)
 {
 	char	**split;
 	int		first;
@@ -76,30 +76,31 @@ static void		add_link_to_table(t_rooms *rooms, char *line)
 	second = 0;
 	split = ft_strsplit(line, '-');
 	if (!split[0] || !split[1])
-		error(rooms, line);
+		error(rooms, line, *map);
 	first = get_index_room(split[0], rooms);
 	second = get_index_room(split[1], rooms);
 	if (first == -1 || second == -1)
-		error(rooms, line);
+		error(rooms, line, *map);
 	rooms->table_paths[first][second] = 1;
 	rooms->table_paths[second][first] = 1;
 	free_split(split);
 }
 
-void			add_links(t_rooms *rooms, char *line_)
+void			add_links(t_rooms *rooms, char *line_, char **map)
 {
 	char	*line;
 
 	if (rooms->start == -1 || rooms->end == -1)
-		error(rooms, line_);
+		error(rooms, line_, *map);
 	if (create_table(rooms))
-		error(rooms, line_);
-	add_link_to_table(rooms, line_);
+		error(rooms, line_, *map);
+	add_link_to_table(rooms, line_, map);
+	free(line_);
 	while (get_next_line(0, &line) > 0 && line && *line)
 	{
-		ft_printf("%s\n", line);
+		*map = ft_strjoin_free(*map, ft_strjoin(line, "\n"), 3);
 		if (line[0] != '#')
-			add_link_to_table(rooms, line);
+			add_link_to_table(rooms, line, map);
 		free(line);
 	}
 	free(line);

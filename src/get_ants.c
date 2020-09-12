@@ -12,16 +12,20 @@
 
 #include "lem_in.h"
 
-int	get_ants(void)
+int	get_ants(char **map)
 {
 	char	*line;
 	int		num_of_ant;
 
+	num_of_ant = 0;
 	while (1)
 	{
 		if (get_next_line(0, &line) > 0 && line && *line)
 		{
-			ft_printf("%s\n", line);
+			if (*map == NULL)
+				*map = ft_strjoin(line, "\n");
+			else
+				*map = ft_strjoin_free(*map, ft_strjoin(line, "\n"), 3);
 			if (line[0] == '#')
 			{
 				free(line);
@@ -29,11 +33,7 @@ int	get_ants(void)
 			}
 			else if (ft_strchr(line, ' ') != NULL
 				|| (num_of_ant = ft_atoi(line)) <= 0)
-			{
-				free(line);
-				ft_printf("ERROR\n");
-				exit(1);
-			}
+				error(NULL, line, *map);
 			free(line);
 			return (num_of_ant);
 		}

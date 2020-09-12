@@ -16,13 +16,17 @@ int		main(void)
 {
 	int		ants;
 	t_rooms	*rooms;
+	char	*map;
 
 	rooms = NULL;
-	ants = get_ants();
-	rooms_add(&rooms);
+	map = NULL;
+	ants = get_ants(&map);
+	if (rooms_add(&rooms, &map))
+		error(rooms, NULL, map);
 	solver(rooms, ants);
-	ft_printf("\n");
+	ft_printf("%s\n", map);
 	print_solver(rooms);
 	rooms_del(rooms);
+	free(map);
 	return (0);
 }

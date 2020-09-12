@@ -25,7 +25,7 @@ void		free_split(char **split)
 	free(split);
 }
 
-static int	add_new_room(t_rooms *rooms, char *line, int *fl)
+static int	add_new_room(t_rooms *rooms, char *line, int *fl, char **map)
 {
 	char	**split;
 
@@ -34,7 +34,7 @@ static int	add_new_room(t_rooms *rooms, char *line, int *fl)
 	|| split[1] == NULL || split[2] == NULL)
 	{
 		free_split(split);
-		error(rooms, line);
+		error(rooms, line, *map);
 	}
 	else
 	{
@@ -51,7 +51,7 @@ static int	add_new_room(t_rooms *rooms, char *line, int *fl)
 	return (rooms->num_of_rooms - 1);
 }
 
-void		rooms_add(t_rooms **rooms)
+int			rooms_add(t_rooms **rooms, char **map)
 {
 	int		fl;
 	char	*line;
@@ -60,21 +60,22 @@ void		rooms_add(t_rooms **rooms)
 	*rooms = rooms_new();
 	while (get_next_line(0, &line) > 0 && line && *line)
 	{
-		ft_printf("%s\n", line);
+		*map = ft_strjoin_free(*map, ft_strjoin(line, "\n"), 3);
 		if (ft_strchr(line, '-') != NULL)
 		{
-			add_links(*rooms, line);
-			break ;
+			add_links(*rooms, line, map);
+			return (0);
 		}
 		if ((*rooms)->start == -1 && ft_strequ("##start", line))
 			fl = 1;
 		else if ((*rooms)->end == -1 && ft_strequ("##end", line))
 			fl = -1;
 		else if (ft_strequ("##end", line) || ft_strequ("##start", line))
-			error(*rooms, line);
+			error(*rooms, line, *map);
 		else if (line[0] != '#')
-			add_new_room(*rooms, line, &fl);
+			add_new_room(*rooms, line, &fl, map);
 		free(line);
 	}
 	free(line);
+	return (1);
 }
