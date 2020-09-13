@@ -92,10 +92,10 @@ void			add_links(t_rooms *rooms, char *line, char **map);
 **	Work with a list paths
 */
 void			path_add(t_rooms *rooms, t_path *p);
-t_path			*path_new(int *p);
+t_path			*path_new(int *p, int n);
 void			path_del(t_path *p);
 void			paths_del(t_rooms *rooms);
-void			print_path(int n, int *a);
+void			print_path(t_path *p);
 void			print_paths(t_rooms *rooms);
 
 /*

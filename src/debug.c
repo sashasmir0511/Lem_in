@@ -21,15 +21,15 @@ void	room_print(t_room *room)
 	ft_printf("status -> %d\n", room->status);
 }
 
-void	print_path(int n, int *a)
+void	print_path(t_path *p)
 {
 	int i;
 
 	i = 0;
-	ft_printf("size - %d: ", n);
-	while (i < n)
+	ft_printf("size - %d: ", p->size_path);
+	while (i < p->size_path)
 	{
-		ft_printf("%d ", a[i]);
+		ft_printf("%d ", p->path[i]);
 		i++;
 	}
 	ft_printf("\n");
@@ -44,7 +44,7 @@ void	print_paths(t_rooms *rooms)
 	ft_printf("___________\n");
 	while (p)
 	{
-		print_path(p->size_path, p->path);
+		print_path(p);
 		a = p->ant_head;
 		while (a)
 		{
@@ -54,6 +54,7 @@ void	print_paths(t_rooms *rooms)
 		}
 		p = p->next;
 	}
+	ft_printf("___________\n");
 }
 
 void	table_print(t_rooms *rooms)

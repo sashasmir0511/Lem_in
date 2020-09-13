@@ -12,17 +12,18 @@
 
 #include "lem_in.h"
 
-static int	len_path(int *p)
+static int	len_path(int *p, int start)
 {
 	int	i;
 
 	i = 1;
-	while (p[i])
+	while (p[i] != start)
 		i++;
+	i++;
 	return (i);
 }
 
-t_path		*path_new(int *p)
+t_path		*path_new(int *p, int start)
 {
 	t_path	*path;
 
@@ -30,7 +31,7 @@ t_path		*path_new(int *p)
 		return (NULL);
 	path->path = p;
 	path->size_ant = 0;
-	path->size_path = len_path(p);
+	path->size_path = len_path(p, start);
 	path->next = NULL;
 	return (path);
 }

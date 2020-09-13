@@ -56,7 +56,7 @@ void			solver(t_rooms *rooms, int ants)
 
 	while ((path = dijkstra(rooms)) != NULL)
 	{
-		path_add(rooms, path_new(path));
+		path_add(rooms, path_new(path, rooms->start));
 		delete_paths_from_table(rooms, path);
 	}
 	i = 1;
